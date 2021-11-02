@@ -50,7 +50,7 @@
 
         var amPm = hours < 12 ? "AM" : "PM";
 
-        hours = hours > 12 ? hours - 12 : hours;
+        hours = hours > 12 ? hours - 12 : hours == 0 ? 12 : hours;
 
         document.getElementById("clockityClock").innerHTML =
           hours + ": " + minutes + ": " + seconds + " " + amPm;
