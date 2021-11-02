@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet "
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+
+  <body onload="tellMeTheCurrentTime()">
+    <!-- Main section -->
+    <div class="the-meat-of-the-matter">
+      <div id="clockityClock"></div>
+      <h1 class="the-heading-of-the-matter">
+        My name is Zelda Shwarzberg.
+        <br />
+        I shamelessly enjoy naps, and I therefore consider napping my favorite
+        hobby (only after being a functioning member of society, of course).
+      </h1>
+
+      <!-- Live background -->
+      <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted>
+          <source src="Resources/liveBackground.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <!-- Javascript code for clock -->
+    <script>
+      function tellMeTheCurrentTime() {
+        var clock = new Date();
+
+        var hours = clock.getHours();
+        var minutes = clock.getMinutes();
+        var seconds = clock.getSeconds();
+
+        hours = addZeroOrDont(hours);
+        minutes = addZeroOrDont(minutes);
+        seconds = addZeroOrDont(seconds);
+
+        var amPm = hours < 12 ? "AM" : "PM";
+
+        hours = hours > 12 ? hours - 12 : hours;
+
+        document.getElementById("clockityClock").innerHTML =
+          hours + ": " + minutes + ": " + seconds + " " + amPm;
+        setTimeout(tellMeTheCurrentTime, 1000);
+      }
+
+      // add a starting zero if hours/ minutes/ seconds are less than 10
+      function addZeroOrDont(timeMeasurement) {
+        return timeMeasurement < 10 ? "0" + timeMeasurement : timeMeasurement;
+      }
+    </script>
+  </body>
+</html>
